@@ -1,0 +1,14 @@
+{
+  "name": "luxbnb",
+  "description": "LuxBnB property-management plugins for Claude",
+  "owner": {
+    "name": "Chris Altomare"
+  },
+  "plugins": [
+    {
+      "name": "luxbnb-guesty",
+      "source": "./plugins/luxbnb-guesty",
+      "description": "Guesty assistant for the LuxBnB PM team: connector, safety rules, kickoff interview and scheduled-report recipes."
+    }
+  ]
+}
