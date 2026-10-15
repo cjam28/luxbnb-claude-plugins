@@ -10,8 +10,8 @@ A Claude plugin for the LuxBnB property-management team. It works with the LuxBn
 ## Use it
 
 1. Add the connector to your Claude account (once): Customize → Connectors → + → **Add custom connector**, name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, then Connect and sign in with the LuxBnB hub login you received from Chris. It then works in chat, Cowork, claude.ai and the phone app.
-2. Type `/luxbnb-guesty:setup`, or just ask a Guesty question ("who checks in tomorrow?").
-3. Type `/luxbnb-guesty:interview` to set up scheduled reports in Claude Cowork.
+2. Recommended: create a Cowork project **LuxBnB – All properties** (Cowork → Projects → +) and, in a chat inside it, type `/luxbnb-guesty:setup`. Accept the kickoff interview; it sets up scheduled reports there and can draft a project per property.
+3. For quick questions anywhere (including the phone), just ask: "who checks in tomorrow?".
 
 Other commands: `/luxbnb-guesty:brief` (today's ops brief) and `/luxbnb-guesty:inbox` (guests waiting on a reply, with drafts).
 

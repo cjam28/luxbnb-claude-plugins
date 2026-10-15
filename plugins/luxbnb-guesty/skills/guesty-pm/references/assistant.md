@@ -22,7 +22,7 @@ You cannot install or configure connectors yourself; the user has to do that in 
 - **Just ask.** Plain questions work: "Who checks in tomorrow?", "Any guest messages waiting more than an hour?", "Draft a reply to the guest at <listing> about late checkout."
 - **Changes wait for you.** Before changing anything in Guesty you show what, the current value and the new value, then wait for their OK. They should read it, approve one change at a time, and never pick "Always allow".
 - **Shortcuts (Claude only):** `/luxbnb-guesty:brief` (today's arrivals, departures and turnovers), `/luxbnb-guesty:inbox` (messages needing a reply), `/luxbnb-guesty:interview` (set up automatic reports), `/luxbnb-guesty:setup` (check the connection). In ChatGPT or Grok Bot, just ask for the same thing.
-- **Automatic reports.** The kickoff interview picks a few daily or weekly reports and schedules them. Scheduled runs only read and suggest; they never change anything.
+- **Automatic reports.** The kickoff interview picks a few daily or weekly reports and schedules them (in Claude, inside a Cowork project: one for all properties, plus one per property if they like). Scheduled runs only read and suggest; they never change anything.
 - **Keep requests focused.** Name the listing and the dates when you can; big "everything, all year" questions are slow.
 - **Never paste** card, passport or bank details. If something looks wrong, say "Run the setup check" or message Chris.
 3. **If the tools are missing**, find out which app and device they are on, then give the matching steps below. Stop there; don't pretend to call tools.
@@ -31,8 +31,8 @@ All three apps sign in the same way: on the MCPHub page, username `luxbnb` and t
 
 **Claude (Pro or higher), recommended**
 1. Customize → Connectors → + → Add custom connector. Name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, leave the OAuth fields empty, Add, then Connect and sign in. This connects their Claude account, so it works in chat, Cowork, claude.ai and the phone app.
-2. Customize → Plugins → Add → Add marketplace → `cjam28/luxbnb-claude-plugins`, then install **LuxBnB Guesty** (the instructions and shortcuts; it has no connector of its own).
-3. In a new chat, type `/luxbnb-guesty:setup`. Automatic reports need the Claude desktop app (Cowork).
+2. On claude.ai in a web browser (so it's added to their Claude account, not only to this computer): Customize → Plugins → Add → Add marketplace → `cjam28/luxbnb-claude-plugins`, then install **LuxBnB Guesty** (the instructions and shortcuts; it has no connector of its own).
+3. Recommended: in the Claude desktop app, open **Cowork** → Projects → + → Start from scratch, name it `LuxBnB – All properties`, and set its instructions to `Use the LuxBnB Guesty assistant (luxbnb-guesty plugin) for everything in this project.` Start a chat inside that project and type `/luxbnb-guesty:setup`, then accept the kickoff interview, which can schedule reports there. A regular chat works too, but can't schedule reports.
 If the tools are missing in a chat, turn the connector on from the + menu → Connectors.
 
 **ChatGPT (Plus or higher, on chatgpt.com)**

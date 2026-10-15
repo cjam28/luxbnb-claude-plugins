@@ -18,11 +18,21 @@ Then:
 - Recommend the **3–5 recipes** below that match their answers, each with a one-line reason.
 - For each recipe they accept, fill in their details (listings, time zone, thresholds, names) and give them the finished scheduled-task prompt.
 - Explain how to schedule it (Part B), or create it for them where the app allows (`/schedule` in Claude Cowork, or a routine in Grok Bot).
+- In Claude Cowork, say which project each task belongs in (Part B, "Cowork projects"): portfolio-wide tasks in **LuxBnB – All properties**, single-property tasks in that property's project. If they look after several properties, offer to draft the instructions for a project per property from their answers.
 - Remind them they can come back and say "Start the kickoff interview" again whenever their needs change.
 
 ## Part B: How scheduling works
 
 - **Claude (recommended):** scheduled tasks live in **Cowork** on paid plans (Pro, Max, Team, Enterprise) and run in the cloud with no device needed. Open Cowork → **Scheduled** (left sidebar) → New, or type `/schedule` in a Cowork task. Set the name, the prompt (from a recipe), the frequency (hourly, daily, weekly, weekdays or manual) and the approval mode. **Choose the approval mode that asks before taking actions.** Make sure the LuxBnB Guesty connector is enabled for Cowork (Customize → Connectors). Results appear in the Scheduled list and in the Claude app on your phone.
+- **Cowork projects (Claude, recommended):** a project is a workspace with its own instructions, scheduled tasks and memory, saved to the Claude account. Start with one project, **LuxBnB – All properties**, for portfolio-wide work (morning brief, inbox, booking screening, month-end, owner reports). Add a project per property (for example **LuxBnB – Treehouse**) when someone handles that property's turnovers, maintenance or owner contact. What a project gives them:
+  - **Instructions** apply to every chat in the project, so they don't repeat "only Treehouse" or their time zone each time.
+  - **Scheduled tasks** sit with the project they're about, so a property's reports are found in one place.
+  - **Memory** stays with the project: what Claude learns about a property (owner preferences, cleaner names, quirks) is used in later chats there and doesn't spill into other property projects. It's shared with ordinary chats outside projects unless they turn off "Use account memory" on the project's page.
+  - **One place per property** for chats, files and links (house manual, owner agreement, vendor list).
+  - Create one: Cowork → **Projects** → **+** → **Start from scratch**, name it, paste the instructions, then start chats from inside it.
+  - Instructions for **All properties**: `Use the LuxBnB Guesty assistant (luxbnb-guesty plugin) for everything in this project. Cover all LuxBnB listings unless I name one. I'm <role>, time zone <tz>; approvals I can give: <from question 6>.`
+  - Instructions for one property: `Use the LuxBnB Guesty assistant (luxbnb-guesty plugin). This project is for <nickname> only: filter every search and report to that listing, and ask before looking at or changing any other listing. Notes: <owner, cleaner or vendors, access, quirks>.`
+  - A property project focuses the assistant; it doesn't lock access. The connector still sees every listing, and the change rules apply as usual.
 - **ChatGPT:** scheduled tasks may not be able to use custom plugins such as LuxBnB Guesty. Run the recipe prompt once by hand in the LuxBnB project first; if a scheduled run can't reach Guesty, schedule it in Claude or Grok Bot instead.
 - **Grok Bot:** schedules are called **routines** and run on the bot's cloud computer. Ask the bot: "Create a routine that runs <every weekday at 8:00> with this prompt: …" (the recipe prompt), and check it with Test before relying on it. Results arrive in the Grok Bot app.
 - Every scheduled prompt below starts with the same two lines, so each run loads the rules fresh:
