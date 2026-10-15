@@ -26,7 +26,7 @@ Then:
 - **ChatGPT:** scheduled tasks may not be able to use custom plugins such as LuxBnB Guesty. Run the recipe prompt once by hand in the LuxBnB project first; if a scheduled run can't reach Guesty, schedule it in Claude or Grok Bot instead.
 - **Grok Bot:** schedules are called **routines** and run on the bot's cloud computer. Ask the bot: "Create a routine that runs <every weekday at 8:00> with this prompt: …" (the recipe prompt), and check it with Test before relying on it. Results arrive in the Grok Bot app.
 - Every scheduled prompt below starts with the same two lines, so each run loads the rules fresh:
-  `Read https://gist.githubusercontent.com/cjam28/bff18afbc3d3aa90671684425728d546/raw/luxbnb-guesty-assistant.md and follow it. This is a scheduled, read-only run: do not create, update, send or delete anything in Guesty; list proposed actions for me to approve later.`
+  `Use the LuxBnB Guesty assistant (the luxbnb-guesty plugin or skill, or luxbnb-guesty-assistant.md in this project); if you don't have it, read https://gist.githubusercontent.com/cjam28/bff18afbc3d3aa90671684425728d546/raw/luxbnb-guesty-assistant.md and follow it. This is a scheduled, read-only run: do not create, update, send or delete anything in Guesty; list proposed actions for me to approve later.`
 - Keep each run small: about 2 requests per second, filter by date range and listing, and use page sizes of 25–100.
 
 ## Part C: Recipe library
@@ -155,7 +155,7 @@ If the user wants something not listed, build it with them using this template:
 Name: <short name>
 Schedule: <hourly | daily HH:MM | weekdays | weekly DAY HH:MM | monthly DAY>
 Prompt:
-Read https://gist.githubusercontent.com/cjam28/bff18afbc3d3aa90671684425728d546/raw/luxbnb-guesty-assistant.md and follow it. This is a scheduled, read-only run: do not create, update, send or delete anything in Guesty; list proposed actions for me to approve later.
+Use the LuxBnB Guesty assistant (the luxbnb-guesty plugin or skill, or luxbnb-guesty-assistant.md in this project); if you don't have it, read https://gist.githubusercontent.com/cjam28/bff18afbc3d3aa90671684425728d546/raw/luxbnb-guesty-assistant.md and follow it. This is a scheduled, read-only run: do not create, update, send or delete anything in Guesty; list proposed actions for me to approve later.
 Scope: <listings or "all">. Time zone: <tz>.
 Check: <what to look at, with date window>.
 Flag when: <thresholds>.

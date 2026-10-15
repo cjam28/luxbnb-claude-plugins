@@ -16,7 +16,7 @@ You cannot install or configure connectors yourself; the user has to do that in 
    - Call `accountsGet` and confirm the account name.
    - Call `propertiesListingList` and report how many listings there are, with their nicknames. Remember the listing name → listing id mapping for the rest of the chat.
    - Tell the user: "Connected to Guesty as <account>. <N> listings. Ready."
-   - If this is their first session (or they ask how this works), give the quick tour below in your own words, then offer the kickoff interview (section 4).
+   - The first time the check reports Ready in a chat, give the quick tour below in your own words (unless the user already asked something specific; then answer that and offer the tour after), then offer the kickoff interview (section 4). Give it again whenever they ask how this works.
 
 **Quick tour (keep it to these six points):**
 - **Just ask.** Plain questions work: "Who checks in tomorrow?", "Any guest messages waiting more than an hour?", "Draft a reply to the guest at <listing> about late checkout."
@@ -31,20 +31,20 @@ All three apps sign in the same way: on the MCPHub page, username `luxbnb` and t
 
 **Claude (Pro or higher), recommended**
 1. Customize → Plugins → Add → Add marketplace → `cjam28/luxbnb-claude-plugins`, then install **LuxBnB Guesty**.
-2. Open the plugin's Connectors tab → Connect, sign in, Allow.
-3. In a new chat, type `/luxbnb-guesty:setup`.
-Without the plugin (any plan): Settings → Connectors → Add custom connector, name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, OAuth fields empty, then Connect.
+2. Open the plugin's Connectors tab → Connect, sign in, Allow. (Claude Code: `/mcp` → luxbnb-guesty → Authenticate.)
+3. In a new chat, type `/luxbnb-guesty:setup`. Automatic reports need the Claude desktop app (Cowork).
+Without the plugin: Settings → Connectors → Add custom connector, name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, OAuth fields empty, then Connect.
 
 **ChatGPT (Plus or higher, on chatgpt.com)**
 1. Go to chatgpt.com/plugins → + → Add custom MCP server. Name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, Authentication OAuth.
 2. Tick "I understand and want to continue", choose Create as a plugin, install it, then sign in.
 3. Create a Project called `LuxBnB` and put this one line in its instructions: `Read and follow this: https://gist.githubusercontent.com/cjam28/bff18afbc3d3aa90671684425728d546/raw/luxbnb-guesty-assistant.md`. Start chats inside that project and pick the plugin with `@`.
-4. OpenAI may limit custom servers to read-only tools on personal plans (Plus, Pro); Business and Enterprise get changes too. If the change tools are missing, do changes in Claude.
+4. On personal plans (Plus, Pro) OpenAI may only allow the read-only tools; Business and Enterprise get changes too. If a change tool is missing, say so plainly, draft the change for them, and suggest doing it in Claude.
 
 **Grok Bot**
 1. In a chat with the bot, send: `Add a custom MCP server called luxbnb-guesty at https://mcp.christoalto.com/mcp/luxbnb-guesty`. Confirm, then sign in from the Connect card.
-2. Send: `Read https://gist.githubusercontent.com/cjam28/bff18afbc3d3aa90671684425728d546/raw/luxbnb-guesty-assistant.md and save it as a skill called luxbnb-guesty`, then the same for `…/raw/luxbnb-guesty-recipes.md` as `luxbnb-reports`.
-3. Start chats with `/luxbnb-guesty`. Approve each change the bot asks about; don't give blanket approval.
+2. Send: `Read https://gist.githubusercontent.com/cjam28/bff18afbc3d3aa90671684425728d546/raw/luxbnb-guesty-assistant.md and save it as a skill called luxbnb-guesty`. (It fetches the recipes itself when they're needed.)
+3. Start chats with "Use the luxbnb-guesty skill". Approve each change the bot asks about; don't give blanket approval.
 
 Never ask the user to paste the password into the chat. If they do, tell them to delete that message and let Chris know so the password can be changed.
 

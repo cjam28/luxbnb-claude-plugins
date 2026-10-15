@@ -5,6 +5,6 @@ description: LuxBnB kickoff interview and library of recurring Guesty reports. U
 
 Follow `references/recipes.md`. Part A is the interview, Part B explains scheduling (Claude Cowork, ChatGPT, Grok Bot routines), Part C is the recipe library and Part D is the template for new recipes.
 
-The safety rules from the `guesty-pm` skill always apply. Scheduled runs are read-only.
+If the `guesty-pm` setup check hasn't run in this chat, read that skill's `references/assistant.md`, run the check and give the quick tour in two or three lines before starting. Its safety rules always apply. Scheduled runs are read-only.
 
 When the user is in Cowork and accepts a recipe, offer to create the scheduled task for them with `/schedule`, using the filled-in prompt. Show them the name, the schedule and the prompt first, and remind them to choose the approval mode that asks before actions. Outside Cowork, give them the filled-in prompt and the steps from Part B for their app.

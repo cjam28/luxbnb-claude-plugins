@@ -5,7 +5,7 @@ A Claude plugin for the LuxBnB property-management team. It connects Claude to L
 ## Install
 
 - **Claude (web, desktop, Cowork):** Customize → Plugins → Add → Add marketplace → `cjam28/luxbnb-claude-plugins`, then install **LuxBnB Guesty**.
-- **Claude Code:** `/plugin install luxbnb-guesty --marketplace cjam28/luxbnb-claude-plugins`
+- **Claude Code:** `/plugin marketplace add cjam28/luxbnb-claude-plugins`, then `/plugin install luxbnb-guesty@luxbnb`
 
 ## Use it
 
