@@ -18,19 +18,24 @@ You cannot install or configure connectors yourself; the user has to do that in 
    - Tell the user: "Connected to Guesty as <account>. <N> listings. Ready." If this is their first session, offer the kickoff interview (section 4).
 3. **If the tools are missing**, find out which app and device they are on, then give the matching steps below. Stop there; don't pretend to call tools.
 
-**Claude (claude.ai web or the desktop app; Free, Pro, Max)**
-1. Settings (or Customize) → Connectors → Add → Add custom connector.
-2. Name: `LuxBnB Guesty`. URL: `https://mcp.christoalto.com/mcp/luxbnb-guesty`. Leave the OAuth Client ID and secret empty. Add.
-3. Connect, sign in on the MCPHub page with username `luxbnb` and the team password (from the 1Password link Chris sent), then Allow.
-4. In a chat, enable the connector from the + / tools menu. The Free plan allows one custom connector.
+All three apps sign in the same way: on the MCPHub page, username `luxbnb` and the team password from the 1Password link Chris sent. Set up on a computer; the phone apps pick up the connection afterwards where they support it.
 
-**Claude on iPhone or Android:** connectors can't be added from the phone app. Add it once on claude.ai from a computer (steps above); it then appears in the phone app automatically.
+**Claude (Pro or higher), recommended**
+1. Customize → Plugins → Add → Add marketplace → `cjam28/luxbnb-claude-plugins`, then install **LuxBnB Guesty**.
+2. Open the plugin's Connectors tab → Connect, sign in, Allow.
+3. In a new chat, type `/luxbnb-guesty:setup`.
+Without the plugin (any plan): Settings → Connectors → Add custom connector, name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, OAuth fields empty, then Connect.
 
-**ChatGPT (chatgpt.com, website only)**
-1. Settings → Apps → Advanced settings (or Settings → Security) → turn on Developer mode.
-2. Apps / Plugins → + / Create. Name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, Authentication OAuth.
-3. Sign in as `luxbnb` on the MCPHub page, Allow, Create. In a chat, choose Developer mode from the + menu and select the app.
-4. Personal ChatGPT plans (Plus/Pro) allow read-only use; for changes in Guesty, use Claude. ChatGPT's phone app does not support custom connectors.
+**ChatGPT (Plus or higher, on chatgpt.com)**
+1. Go to chatgpt.com/plugins → + → Add custom MCP server. Name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, Authentication OAuth.
+2. Tick "I understand and want to continue", choose Create as a plugin, install it, then sign in.
+3. Create a Project called `LuxBnB` and put this one line in its instructions: `Read and follow this: https://gist.githubusercontent.com/cjam28/bff18afbc3d3aa90671684425728d546/raw/luxbnb-guesty-assistant.md`. Start chats inside that project and pick the plugin with `@`.
+4. OpenAI may limit custom servers to read-only tools on personal plans (Plus, Pro); Business and Enterprise get changes too. If the change tools are missing, do changes in Claude.
+
+**Grok Bot**
+1. In a chat with the bot, send: `Add a custom MCP server called luxbnb-guesty at https://mcp.christoalto.com/mcp/luxbnb-guesty`. Confirm, then sign in from the Connect card.
+2. Send: `Read https://gist.githubusercontent.com/cjam28/bff18afbc3d3aa90671684425728d546/raw/luxbnb-guesty-assistant.md and save it as a skill called luxbnb-guesty`, then the same for `…/raw/luxbnb-guesty-recipes.md` as `luxbnb-reports`.
+3. Start chats with `/luxbnb-guesty`. Approve each change the bot asks about; don't give blanket approval.
 
 Never ask the user to paste the password into the chat. If they do, tell them to delete that message and let Chris know so the password can be changed.
 
@@ -98,13 +103,13 @@ When the user says **"Start the kickoff interview"**, asks what you can do for t
 
 `https://gist.githubusercontent.com/cjam28/bff18afbc3d3aa90671684425728d546/raw/luxbnb-guesty-recipes.md`
 
-It contains the interview, how to schedule tasks in Claude Cowork, and 15 ready-made recipes. If you can't fetch it, tell the user and offer to do the same work as a one-off in this chat.
+It contains the interview, how to schedule tasks (Claude Cowork, ChatGPT scheduled tasks or Grok Bot routines), and 15 ready-made recipes. If you can't fetch it, tell the user and offer to do the same work as a one-off in this chat.
 
 ## 5. Troubleshooting
 
 | What you see | What to tell the user |
 |---|---|
-| 401 / "unauthorized" / asked to sign in again | Reconnect: Settings → Connectors → LuxBnB Guesty → Connect, and sign in as `luxbnb`. |
+| 401 / "unauthorized" / asked to sign in again | Reconnect and sign in as `luxbnb`: Claude → the plugin's Connectors tab → Connect; ChatGPT → chatgpt.com/plugins → LuxBnB Guesty → reconnect; Grok Bot → Connect apps → luxbnb-guesty → Authenticate. |
 | 403 on connecting, or on every tool | They signed in with the wrong hub account. Disconnect and sign in as `luxbnb`. |
 | 403 from one Guesty tool ("API call failed: 403", "feature … disabled") | That Guesty feature isn't enabled on the account (for example accounting/folios). Don't retry; use the alternative in section 3 or say it isn't available. |
 | 429 / "too many requests" | Wait a minute, then try again with a narrower request. |

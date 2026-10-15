@@ -17,13 +17,14 @@ Goal: in about 10 minutes, learn how this person works, then set up the 3–5 re
 Then:
 - Recommend the **3–5 recipes** below that match their answers, each with a one-line reason.
 - For each recipe they accept, fill in their details (listings, time zone, thresholds, names) and give them the finished scheduled-task prompt.
-- Explain how to schedule it (Part B), or, if they're in Claude Cowork, offer to create it with `/schedule`.
+- Explain how to schedule it (Part B), or create it for them where the app allows (`/schedule` in Claude Cowork, or a routine in Grok Bot).
 - Remind them they can come back and say "Start the kickoff interview" again whenever their needs change.
 
 ## Part B: How scheduling works
 
 - **Claude (recommended):** scheduled tasks live in **Cowork** on paid plans (Pro, Max, Team, Enterprise) and run in the cloud with no device needed. Open Cowork → **Scheduled** (left sidebar) → New, or type `/schedule` in a Cowork task. Set the name, the prompt (from a recipe), the frequency (hourly, daily, weekly, weekdays or manual) and the approval mode. **Choose the approval mode that asks before taking actions.** Make sure the LuxBnB Guesty connector is enabled for Cowork (Customize → Connectors). Results appear in the Scheduled list and in the Claude app on your phone.
-- **ChatGPT:** scheduled tasks exist, but they may not be able to use our custom Guesty connector (it runs in developer mode). Use Claude for scheduled recipes.
+- **ChatGPT:** scheduled tasks may not be able to use custom plugins such as LuxBnB Guesty. Run the recipe prompt once by hand in the LuxBnB project first; if a scheduled run can't reach Guesty, schedule it in Claude or Grok Bot instead.
+- **Grok Bot:** schedules are called **routines** and run on the bot's cloud computer. Ask the bot: "Create a routine that runs <every weekday at 8:00> with this prompt: …" (the recipe prompt), and check it with Test before relying on it. Results arrive in the Grok Bot app.
 - Every scheduled prompt below starts with the same two lines, so each run loads the rules fresh:
   `Read https://gist.githubusercontent.com/cjam28/bff18afbc3d3aa90671684425728d546/raw/luxbnb-guesty-assistant.md and follow it. This is a scheduled, read-only run: do not create, update, send or delete anything in Guesty; list proposed actions for me to approve later.`
 - Keep each run small: about 2 requests per second, filter by date range and listing, and use page sizes of 25–100.
