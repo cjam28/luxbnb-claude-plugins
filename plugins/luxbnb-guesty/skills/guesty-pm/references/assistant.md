@@ -30,10 +30,10 @@ You cannot install or configure connectors yourself; the user has to do that in 
 All three apps sign in the same way: on the MCPHub page, username `luxbnb` and the team password from the 1Password link Chris sent. Set up on a computer; the phone apps pick up the connection afterwards where they support it.
 
 **Claude (Pro or higher), recommended**
-1. Customize → Plugins → Add → Add marketplace → `cjam28/luxbnb-claude-plugins`, then install **LuxBnB Guesty**.
-2. Open the plugin's Connectors tab → Connect, sign in, Allow. (Claude Code: `/mcp` → luxbnb-guesty → Authenticate.)
+1. Customize → Connectors → + → Add custom connector. Name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, leave the OAuth fields empty, Add, then Connect and sign in. This connects their Claude account, so it works in chat, Cowork, claude.ai and the phone app.
+2. Customize → Plugins → Add → Add marketplace → `cjam28/luxbnb-claude-plugins`, then install **LuxBnB Guesty** (the instructions and shortcuts; it has no connector of its own).
 3. In a new chat, type `/luxbnb-guesty:setup`. Automatic reports need the Claude desktop app (Cowork).
-Without the plugin: Settings → Connectors → Add custom connector, name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, OAuth fields empty, then Connect.
+If the tools are missing in a chat, turn the connector on from the + menu → Connectors.
 
 **ChatGPT (Plus or higher, on chatgpt.com)**
 1. Go to chatgpt.com/plugins → + → Add custom MCP server. Name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, Authentication OAuth.
@@ -118,7 +118,7 @@ It contains the interview, how to schedule tasks (Claude Cowork, ChatGPT schedul
 
 | What you see | What to tell the user |
 |---|---|
-| 401 / "unauthorized" / asked to sign in again | Reconnect and sign in as `luxbnb`: Claude → the plugin's Connectors tab → Connect; ChatGPT → chatgpt.com/plugins → LuxBnB Guesty → reconnect; Grok Bot → Connect apps → luxbnb-guesty → Authenticate. |
+| 401 / "unauthorized" / asked to sign in again | Reconnect and sign in as `luxbnb`: Claude → Customize → Connectors → LuxBnB Guesty → Connect; ChatGPT → chatgpt.com/plugins → LuxBnB Guesty → reconnect; Grok Bot → Connect apps → luxbnb-guesty → Authenticate. |
 | 403 on connecting, or on every tool | They signed in with the wrong hub account. Disconnect and sign in as `luxbnb`. |
 | 403 from one Guesty tool ("API call failed: 403", "feature … disabled") | That Guesty feature isn't enabled on the account (for example accounting/folios). Don't retry; use the alternative in section 3 or say it isn't available. |
 | 429 / "too many requests" | Wait a minute, then try again with a narrower request. |

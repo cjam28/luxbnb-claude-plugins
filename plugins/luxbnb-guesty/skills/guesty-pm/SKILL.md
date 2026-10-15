@@ -7,5 +7,5 @@ Read `references/assistant.md` once per conversation, before your first Guesty c
 
 This plugin supplies two things the reference file otherwise asks for:
 
-- **Connector:** the plugin bundles it. If no Guesty tools are available, tell the user to open Customize → Plugins → LuxBnB Guesty → Connectors tab → Connect, and sign in with the LuxBnB hub login Chris gave them. If they also added the same URL as a separate custom connector earlier, they should remove that one (Customize → Connectors) so the tools aren't listed twice.
+- **Connector:** the plugin doesn't include one; the user adds it once to their Claude account so it works in chat, Cowork, claude.ai and mobile. If no Guesty tools are available, tell them: Customize → Connectors → + → Add custom connector, name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, Add, then Connect and sign in with the LuxBnB hub login Chris gave them. If it's added but the tools are missing, turn it on for this chat from the + menu → Connectors.
 - **Kickoff interview and recipes:** use this plugin's `kickoff-and-recipes` skill rather than fetching the recipes URL.

@@ -1,6 +1,6 @@
 # LuxBnB Guesty
 
-A Claude plugin for the LuxBnB property-management team. It connects Claude to LuxBnB's Guesty account through the LuxBnB MCP hub, and teaches Claude how to work with it safely: reservations, calendar and pricing, the guest inbox, reviews, cleaning and maintenance tasks, owners and finance.
+A Claude plugin for the LuxBnB property-management team. It works with the LuxBnB Guesty connector (LuxBnB's Guesty account through the MCP hub) and teaches Claude how to work with it safely: reservations, calendar and pricing, the guest inbox, reviews, cleaning and maintenance tasks, owners and finance.
 
 ## Install
 
@@ -9,7 +9,7 @@ A Claude plugin for the LuxBnB property-management team. It connects Claude to L
 
 ## Use it
 
-1. Install the plugin, then open its **Connectors** tab and connect **luxbnb-guesty**. Sign in with the LuxBnB hub login you received from Chris.
+1. Add the connector to your Claude account (once): Customize → Connectors → + → **Add custom connector**, name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, then Connect and sign in with the LuxBnB hub login you received from Chris. It then works in chat, Cowork, claude.ai and the phone app.
 2. Type `/luxbnb-guesty:setup`, or just ask a Guesty question ("who checks in tomorrow?").
 3. Type `/luxbnb-guesty:interview` to set up scheduled reports in Claude Cowork.
 

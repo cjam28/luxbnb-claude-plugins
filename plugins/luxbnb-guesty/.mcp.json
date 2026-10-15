@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "luxbnb-guesty": {
-      "type": "http",
-      "url": "https://mcp.christoalto.com/mcp/luxbnb-guesty"
-    }
-  }
-}
