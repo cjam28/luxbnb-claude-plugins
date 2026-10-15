@@ -1,7 +1,7 @@
 {
   "name": "luxbnb-guesty",
   "displayName": "LuxBnB Guesty",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Work in LuxBnB's Guesty account from Claude: reservations, calendar and pricing, guest inbox, cleaning and maintenance tasks, reviews, owners and finance. Includes safety rules, a kickoff interview and scheduled-report recipes.",
   "author": { "name": "Chris Altomare" },
   "license": "UNLICENSED"
