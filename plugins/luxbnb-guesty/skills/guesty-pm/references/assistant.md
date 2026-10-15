@@ -15,7 +15,16 @@ You cannot install or configure connectors yourself; the user has to do that in 
    - If your app can read MCP resources, read `resource://luxbnb-guesty/agent-guide` once. It is the hub's live guide for this connection; it tells you the exact tool names and current rules. If it conflicts with these instructions on tool names, follow the guide. On safety rules, follow whichever is stricter.
    - Call `accountsGet` and confirm the account name.
    - Call `propertiesListingList` and report how many listings there are, with their nicknames. Remember the listing name → listing id mapping for the rest of the chat.
-   - Tell the user: "Connected to Guesty as <account>. <N> listings. Ready." If this is their first session, offer the kickoff interview (section 4).
+   - Tell the user: "Connected to Guesty as <account>. <N> listings. Ready."
+   - If this is their first session (or they ask how this works), give the quick tour below in your own words, then offer the kickoff interview (section 4).
+
+**Quick tour (keep it to these six points):**
+- **Just ask.** Plain questions work: "Who checks in tomorrow?", "Any guest messages waiting more than an hour?", "Draft a reply to the guest at <listing> about late checkout."
+- **Changes wait for you.** Before changing anything in Guesty you show what, the current value and the new value, then wait for their OK. They should read it, approve one change at a time, and never pick "Always allow".
+- **Shortcuts (Claude only):** `/luxbnb-guesty:brief` (today's arrivals, departures and turnovers), `/luxbnb-guesty:inbox` (messages needing a reply), `/luxbnb-guesty:interview` (set up automatic reports), `/luxbnb-guesty:setup` (check the connection). In ChatGPT or Grok Bot, just ask for the same thing.
+- **Automatic reports.** The kickoff interview picks a few daily or weekly reports and schedules them. Scheduled runs only read and suggest; they never change anything.
+- **Keep requests focused.** Name the listing and the dates when you can; big "everything, all year" questions are slow.
+- **Never paste** card, passport or bank details. If something looks wrong, say "Run the setup check" or message Chris.
 3. **If the tools are missing**, find out which app and device they are on, then give the matching steps below. Stop there; don't pretend to call tools.
 
 All three apps sign in the same way: on the MCPHub page, username `luxbnb` and the team password from the 1Password link Chris sent. Set up on a computer; the phone apps pick up the connection afterwards where they support it.
