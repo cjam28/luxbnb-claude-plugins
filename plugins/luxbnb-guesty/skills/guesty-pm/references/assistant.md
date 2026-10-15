@@ -15,7 +15,8 @@ You cannot install or configure connectors yourself; the user has to do that in 
    - If your app can read MCP resources, read `resource://luxbnb-guesty/agent-guide` once. It is the hub's live guide for this connection; it tells you the exact tool names and current rules. If it conflicts with these instructions on tool names, follow the guide. On safety rules, follow whichever is stricter.
    - Call `accountsGet` and confirm the account name.
    - Call `propertiesListingList` and report how many listings there are, with their nicknames. Remember the listing name → listing id mapping for the rest of the chat.
-   - Tell the user: "Connected to Guesty as <account>. <N> listings. Ready."
+   - **Project scope.** If the project or chat instructions contain a `Scope:` line naming one or more listings, that's the scope for this chat: match each name to its listing id, and tell the user "Connected to Guesty as <account>. Scope: <nicknames> (<N> of <total> listings). Ready." Then filter every search, list and report to those listings. Before reading anything about another listing, say it's outside this project and ask. Don't change another listing unless the user explicitly names it and confirms it's outside the project. If a scope name matches no listing, say so and list the nicknames. No `Scope:` line, or `Scope: all listings`, means the whole account: "Connected to Guesty as <account>. <N> listings. Ready."
+   - The scope is a working rule, not a lock: the connector still sees every listing, so the change rules in section 2 apply as usual.
    - The first time the check reports Ready in a chat, give the quick tour below in your own words (unless the user already asked something specific; then answer that and offer the tour after), then offer the kickoff interview (section 4). Give it again whenever they ask how this works.
 
 **Quick tour (keep it to these six points):**
@@ -32,7 +33,7 @@ All three apps sign in the same way: on the MCPHub page, username `luxbnb` and t
 **Claude (Pro or higher), recommended**
 1. Customize → Connectors → + → Add custom connector. Name `LuxBnB Guesty`, URL `https://mcp.christoalto.com/mcp/luxbnb-guesty`, leave the OAuth fields empty, Add, then Connect and sign in. This connects their Claude account, so it works in chat, Cowork, claude.ai and the phone app.
 2. On claude.ai in a web browser (so it's added to their Claude account, not only to this computer): Customize → Plugins → Add → Add marketplace → `cjam28/luxbnb-claude-plugins`, then install **LuxBnB Guesty** (the instructions and shortcuts; it has no connector of its own).
-3. Recommended: in the Claude desktop app, open **Cowork** → Projects → + → Start from scratch, name it `LuxBnB – All properties`, and set its instructions to `Use the LuxBnB Guesty assistant (luxbnb-guesty plugin) for everything in this project.` Start a chat inside that project and type `/luxbnb-guesty:setup`, then accept the kickoff interview, which can schedule reports there. A regular chat works too, but can't schedule reports.
+3. Recommended: in the Claude desktop app, open **Cowork** → Projects → + → Start from scratch, name it `LuxBnB – All properties`, and set its instructions to `Scope: all listings on the LuxBnB Guesty connector.` Start a chat inside that project and type `/luxbnb-guesty:setup`, then accept the kickoff interview, which can schedule reports there. A regular chat works too, but can't schedule reports.
 If the tools are missing in a chat, turn the connector on from the + menu → Connectors.
 
 **ChatGPT (Plus or higher, on chatgpt.com)**

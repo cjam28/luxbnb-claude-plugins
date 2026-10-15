@@ -7,18 +7,22 @@ Read this when the user says **"Start the kickoff interview"**, asks what the as
 Goal: in about 10 minutes, learn how this person works, then set up the 3–5 recipes that will save them the most time. Ask **one question at a time**, offer likely answers as quick options, and keep a running summary.
 
 1. **Role and scope:** "What's your role, and which properties do you look after: all of them, or a subset?" (Show the listing nicknames from `propertiesListingList` so they can pick.)
-2. **Time zone and hours:** "What time zone are you in, and what are your working hours?" Scheduled times use this.
-3. **Biggest time sinks:** "Which of these eats most of your week?" Options: guest messages, cleaning coordination, maintenance, pricing, owner reporting, month-end finance, new-booking checks, reviews.
-4. **How the team uses Guesty:** "Are cleanings and maintenance tracked as Guesty tasks? Who are the cleaners or vendors, and how are they named there?" If they aren't tracked in Guesty, the cleaning and maintenance recipes can only use reservations, messages and reviews; say so.
-5. **Thresholds:** "How fast should guests get a reply (for example 1 hour in the daytime)? What's a 'tight' turnover for you (for example under 5 hours)? What occupancy or price targets do you have?"
-6. **Approvals:** "Which changes are you allowed to approve yourself, and which go to Chris?" Default: messages, notes and tasks are fine for them to approve; pricing, dates, cancellations, money and users go to Chris.
-7. **Output style:** "Short bullet brief or a full table? Anything you always want at the top?"
+2. **Separate projects (Claude Cowork only; skip elsewhere, and skip if they look after one property):** "Do you want a separate Cowork project for any property? It keeps that property's reports, notes and memory together. Most people start with just this one." Options: no, just this project; yes, for <the properties they named>. Default to no.
+3. **Time zone and hours:** "What time zone are you in, and what are your working hours?" Scheduled times use this.
+4. **Biggest time sinks:** "Which of these eats most of your week?" Options: guest messages, cleaning coordination, maintenance, pricing, owner reporting, month-end finance, new-booking checks, reviews.
+5. **How the team uses Guesty:** "Are cleanings and maintenance tracked as Guesty tasks? Who are the cleaners or vendors, and how are they named there?" If they aren't tracked in Guesty, the cleaning and maintenance recipes can only use reservations, messages and reviews; say so.
+6. **Thresholds:** "How fast should guests get a reply (for example 1 hour in the daytime)? What's a 'tight' turnover for you (for example under 5 hours)? What occupancy or price targets do you have?"
+7. **Approvals:** "Which changes are you allowed to approve yourself, and which go to Chris?" Default: messages, notes and tasks are fine for them to approve; pricing, dates, cancellations, money and users go to Chris.
+8. **Output style:** "Short bullet brief or a full table? Anything you always want at the top?"
 
 Then:
 - Recommend the **3–5 recipes** below that match their answers, each with a one-line reason.
 - For each recipe they accept, fill in their details (listings, time zone, thresholds, names) and give them the finished scheduled-task prompt.
 - Explain how to schedule it (Part B), or create it for them where the app allows (`/schedule` in Claude Cowork, or a routine in Grok Bot).
-- In Claude Cowork, say which project each task belongs in (Part B, "Cowork projects"): portfolio-wide tasks in **LuxBnB – All properties**, single-property tasks in that property's project. If they look after several properties, offer to draft the instructions for a project per property from their answers.
+- In Claude Cowork, say which project each task belongs in (Part B, "Cowork projects"): portfolio-wide tasks go in the general project; tasks about one property go in that property's project if they asked for one (question 2), otherwise here with that listing in the task's `Scope:` line. Schedule only this project's tasks from here.
+- For each property project they asked for, give them: the project name (`LuxBnB – <nickname>`), the instructions to paste (Part B), the recipes that belong there, and the next step: "Create the project, start a chat in it, type `/luxbnb-guesty:setup`, and say yes to the property interview."
+
+**Short property interview.** When the scope is one listing (a property project) and the user starts the interview, don't repeat the general questions. Ask only, one at a time: who cleans and maintains it and how they appear in Guesty; turnover and reply-time limits for this property; the owner and what they expect to hear; anything unusual (access, parking, HOA, noise rules). Then recommend 2–3 property recipes, fill them in with `Scope: <nickname>`, schedule them from this project, and offer to add the notes to the project's instructions.
 - Remind them they can come back and say "Start the kickoff interview" again whenever their needs change.
 
 ## Part B: How scheduling works
@@ -30,9 +34,10 @@ Then:
   - **Memory** stays with the project: what Claude learns about a property (owner preferences, cleaner names, quirks) is used in later chats there and doesn't spill into other property projects. It's shared with ordinary chats outside projects unless they turn off "Use account memory" on the project's page.
   - **One place per property** for chats, files and links (house manual, owner agreement, vendor list).
   - Create one: Cowork → **Projects** → **+** → **Start from scratch**, name it, paste the instructions, then start chats from inside it.
-  - Instructions for **All properties**: `Use the LuxBnB Guesty assistant (luxbnb-guesty plugin) for everything in this project. Cover all LuxBnB listings unless I name one. I'm <role>, time zone <tz>; approvals I can give: <from question 6>.`
-  - Instructions for one property: `Use the LuxBnB Guesty assistant (luxbnb-guesty plugin). This project is for <nickname> only: filter every search and report to that listing, and ask before looking at or changing any other listing. Notes: <owner, cleaner or vendors, access, quirks>.`
-  - A property project focuses the assistant; it doesn't lock access. The connector still sees every listing, and the change rules apply as usual.
+  - Instructions for the general project: `Scope: all listings on the LuxBnB Guesty connector.` Add after the interview: `I'm <role>, time zone <tz>. Approvals I can give: <from question 7>.`
+  - Instructions for a property project: `Scope: <nickname> only.` Add after the property interview: `Notes: <owner, cleaner or vendors, access, quirks>.`
+  - The assistant reads the `Scope:` line at setup, confirms it, keeps searches and reports to that listing, and asks before going outside it. It focuses the work; it doesn't lock access. The connector still sees every listing, and the change rules apply as usual.
+  - Scheduled tasks carry their own `Scope:` line (Part D), so a property project's tasks stay on that property even when they run on their own.
 - **ChatGPT:** scheduled tasks may not be able to use custom plugins such as LuxBnB Guesty. Run the recipe prompt once by hand in the LuxBnB project first; if a scheduled run can't reach Guesty, schedule it in Claude or Grok Bot instead.
 - **Grok Bot:** schedules are called **routines** and run on the bot's cloud computer. Ask the bot: "Create a routine that runs <every weekday at 8:00> with this prompt: …" (the recipe prompt), and check it with Test before relying on it. Results arrive in the Grok Bot app.
 - Every scheduled prompt below starts with the same two lines, so each run loads the rules fresh:
