@@ -1,0 +1,10 @@
+---
+name: kickoff-and-recipes
+description: LuxBnB kickoff interview and library of recurring Guesty reports. Use it when the user says "Start the kickoff interview", asks what the assistant can do or how to get more out of it, wants something done every day or week, or asks for a standard property-management routine even once. Examples: morning arrivals brief, guest inbox check, screening new bookings for risk, cleaning or turnover board, maintenance follow-up, rate or competitor pricing check, reviews digest, owner report, month-end close. Use this skill instead of improvising one of these routines.
+---
+
+Follow `references/recipes.md`. Part A is the interview, Part B explains scheduling (Claude Cowork, ChatGPT, Grok Bot routines), Part C is the recipe library and Part D is the template for new recipes.
+
+If the `guesty-pm` setup check hasn't run in this chat, read that skill's `references/assistant.md`, run the check and give the quick tour in two or three lines before starting. Its safety rules always apply. Scheduled runs are read-only.
+
+When the user is in Cowork and accepts a recipe, offer to create the scheduled task for them with `/schedule`, using the filled-in prompt. Show them the name, the schedule and the prompt first, and remind them to choose the approval mode that asks before actions. In Cowork, follow Part B on projects: say which project each task belongs in and offer to draft project instructions. If the chat's scope is one listing, run the short property interview from Part A instead of the full one. Outside Cowork, give them the filled-in prompt and the steps from Part B for their app.
