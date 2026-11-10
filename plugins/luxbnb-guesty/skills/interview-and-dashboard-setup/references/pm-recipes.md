@@ -1,10 +1,14 @@
-# LuxBnB Guesty Assistant: kickoff interview and scheduled-task recipes
+# LuxBnB Guesty Assistant: operations recipes
 
-Read this when the user says **"Start the kickoff interview"**, asks what the assistant can do for them, or wants to set up a scheduled task. The safety rules in the main instructions always apply. In particular, **scheduled tasks are read-only**: they report and propose, and never change anything in Guesty.
+This file is the operations library (brief, inbox, and the rest). The interview, dashboards, files, and schedule handover are `interview-and-dashboard-setup` (`references/recipes.md` in the plugin). The day-to-day assistant skill is `guesty-assistant`.
 
-## Part A: Kickoff interview
+Scheduled report tasks are read-only in Guesty and use the host's **bypass** permission so the connector runs without a prompt. Do not choose "ask before actions" for those tasks. Interactive Guesty changes still wait for a yes. Never pick "Always allow" for those.
 
-Goal: in about 10 minutes, learn how this person works, then set up the 3–5 recipes that will save them the most time. Ask **one question at a time**, offer likely answers as quick options, and keep a running summary.
+Read this when the user wants one of the operations recipes below. The safety rules in the assistant always apply.
+
+## Part A: Extra questions for a property manager
+
+Do not run a second interview. `interview-and-dashboard-setup` owns the interview, the files, and the scheduled tasks. If this person manages listings for someone else, add the questions below there, one at a time, when they are not already answered. Then use Part C. If a later section in this file disagrees about approval mode, models, or where files go, follow `interview-and-dashboard-setup` and the host file.
 
 1. **Role and scope:** "What's your role, and which properties do you look after: all of them, or a subset?" (Show the listing nicknames from `propertiesListingList` so they can pick.)
 2. **Separate projects (Claude Cowork only; skip elsewhere, and skip if they look after one property):** "Do you want a separate Cowork project for any property? It keeps that property's reports, notes and memory together. Most people start with just this one." Options: no, just this project; yes, for <the properties they named>. Default to no.
@@ -27,9 +31,9 @@ Then:
 
 ## Part B: How scheduling works
 
-- **Claude (recommended):** scheduled tasks live in **Cowork** on paid plans (Pro, Max, Team, Enterprise) and run in the cloud with no device needed. Open Cowork → **Scheduled** (left sidebar) → New, or type `/schedule` in a Cowork task. Set the name, the prompt (from a recipe), the frequency (hourly, daily, weekly, weekdays or manual) and the approval mode. **Choose the approval mode that asks before taking actions.** Make sure the LuxBnB Guesty connector is enabled for Cowork (Customize → Connectors). Results appear in the Scheduled list and in the Claude app on your phone.
-- **Cowork projects (Claude, recommended):** a project is a workspace with its own instructions, scheduled tasks and memory, saved to the Claude account. Start with one project, **LuxBnB – All properties**, for portfolio-wide work (morning brief, inbox, booking screening, month-end, owner reports). Add a project per property (for example **LuxBnB – Treehouse**) when someone handles that property's turnovers, maintenance or owner contact. What a project gives them:
-  - **Instructions** apply to every chat in the project, so they don't repeat "only Treehouse" or their time zone each time.
+- **Claude (recommended):** scheduled tasks live in **Cowork** on paid plans (Pro, Max, Team, Enterprise) and run in the cloud with no device needed. Open Cowork → **Scheduled** (left sidebar) → New, or type `/schedule` in a Cowork task. Set the name, the prompt (from a recipe), the frequency (hourly, daily, weekly, weekdays or manual), and then pause so they can set **bypass** and the model (fast checks on a fast model, month-end and owner reports on the strongest). Make sure this plugin and the LuxBnB Guesty connector are enabled on the task. Results appear in the Scheduled list and in the Claude app on your phone.
+- **Cowork projects (Claude, recommended):** a project is a workspace with its own instructions, scheduled tasks and memory, saved to the Claude account. Start with one project, **LuxBnB – All properties**, for portfolio-wide work (morning brief, inbox, booking screening, month-end, owner reports). Add a project per listing (for example **LuxBnB – <nickname>**) when someone handles that listing's turnovers, maintenance, or owner contact. What a project gives them:
+  - **Instructions** apply to every chat in the project, so they don't repeat a nickname or their time zone each time.
   - **Scheduled tasks** sit with the project they're about, so a property's reports are found in one place.
   - **Memory** stays with the project: what Claude learns about a property (owner preferences, cleaner names, quirks) is used in later chats there and doesn't spill into other property projects. It's shared with ordinary chats outside projects unless they turn off "Use account memory" on the project's page.
   - **One place per property** for chats, files and links (house manual, owner agreement, vendor list).
@@ -41,7 +45,7 @@ Then:
 - **ChatGPT:** scheduled tasks may not be able to use custom plugins such as LuxBnB Guesty. Run the recipe prompt once by hand in the LuxBnB project first; if a scheduled run can't reach Guesty, schedule it in Claude or Grok Bot instead.
 - **Grok Bot:** schedules are called **routines** and run on the bot's cloud computer. Ask the bot: "Create a routine that runs <every weekday at 8:00> with this prompt: …" (the recipe prompt), and check it with Test before relying on it. Results arrive in the Grok Bot app.
 - Every scheduled prompt below starts with the same two lines, so each run loads the rules fresh:
-  `Use the LuxBnB Guesty assistant (the luxbnb-guesty plugin or skill, or luxbnb-guesty-assistant.md in this project); if you don't have it, read https://gist.githubusercontent.com/cjam28/bff18afbc3d3aa90671684425728d546/raw/luxbnb-guesty-assistant.md and follow it. This is a scheduled, read-only run: do not create, update, send or delete anything in Guesty; list proposed actions for me to approve later.`
+  `Use guesty-assistant from this plugin and follow it. This is a scheduled, read-only run: do not create, update, send, or delete anything in Guesty. Read reports/contract.md if it exists. Write only this task's report file and tab.`
 - Keep each run small: about 2 requests per second, filter by date range and listing, and use page sizes of 25–100.
 
 ## Part C: Recipe library
@@ -170,7 +174,7 @@ If the user wants something not listed, build it with them using this template:
 Name: <short name>
 Schedule: <hourly | daily HH:MM | weekdays | weekly DAY HH:MM | monthly DAY>
 Prompt:
-Use the LuxBnB Guesty assistant (the luxbnb-guesty plugin or skill, or luxbnb-guesty-assistant.md in this project); if you don't have it, read https://gist.githubusercontent.com/cjam28/bff18afbc3d3aa90671684425728d546/raw/luxbnb-guesty-assistant.md and follow it. This is a scheduled, read-only run: do not create, update, send or delete anything in Guesty; list proposed actions for me to approve later.
+Use guesty-assistant from this plugin and follow it. This is a scheduled, read-only run: do not create, update, send, or delete anything in Guesty. Read reports/contract.md if it exists. Write only this task's report file and tab.
 Scope: <listings or "all">. Time zone: <tz>.
 Check: <what to look at, with date window>.
 Flag when: <thresholds>.

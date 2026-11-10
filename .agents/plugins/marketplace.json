@@ -1,0 +1,21 @@
+{
+  "name": "luxbnb",
+  "interface": {
+    "displayName": "LuxBnB Guesty"
+  },
+  "plugins": [
+    {
+      "name": "luxbnb-guesty",
+      "source": {
+        "source": "local",
+        "path": "./plugins/luxbnb-guesty"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity",
+      "description": "Guesty assistant for the LuxBnB property-management team: reservations, calendar, inbox, tasks, and scheduled reports. Get started: (1) Use a ChatGPT Project with a folder, preferably in the desktop app. (2) Add the LuxBnB Guesty MCP connector (see README). (3) In that project, ask to use the guesty-onboarding skill. (4) Then use interview-and-dashboard-setup in the same chat for reports. (5) Keep that chat for later changes. Put statements in the project folder under reports/statements/, not only in the chat."
+    }
+  ]
+}
