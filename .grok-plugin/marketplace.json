@@ -8,7 +8,7 @@
     {
       "name": "luxbnb-guesty",
       "source": "./plugins/luxbnb-guesty",
-      "description": "Guesty assistant for the LuxBnB property-management team: reservations, calendar, inbox, tasks, and scheduled reports. Get started: (1) Use a Grok workspace whose files live under /workspace. (2) Add the LuxBnB Guesty MCP server (see README). (3) Ask the bot to use guesty-onboarding. (4) Then use interview-and-dashboard-setup in the same chat for reports and routines. (5) Pin this chat and the dashboard Page. Put statements in /workspace/.../reports/statements/, not only in the chat."
+      "description": "Guesty assistant for the LuxBnB property-management team: reservations, calendar, inbox, tasks, and scheduled reports. Get started: (1) Use a Grok workspace whose files live under /workspace. (2) Add the LuxBnB Guesty connector (see README). (3) Ask the bot to use guesty-onboarding. (4) Then use interview-and-dashboard-setup in the same chat for reports and routines. (5) Pin this chat and the dashboard Page. Put statements in /workspace/.../reports/statements/, not only in the chat."
     }
   ]
 }

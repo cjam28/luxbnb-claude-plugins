@@ -6,7 +6,7 @@ Clients install **this** repository only (`cjam28/luxbnb-claude-plugins`). Do no
 
 ## Get started
 
-Guesty assistant for the LuxBnB property-management team: reservations, calendar, inbox, tasks, and scheduled reports. Get started: (1) Work inside a Cowork Project — not a loose chat. (2) Connect the LuxBnB Guesty Guesty connector if tools are missing (see this repo's README). (3) In that project chat, run /luxbnb-guesty:setup (guesty-onboarding). (4) Then run /luxbnb-guesty:interview (interview-and-dashboard-setup) in the same chat to build reports. (5) Pin that chat and return there for system changes. Drop statements and contracts under reports/statements/ and reports/contracts/ in the project, not only in the chat.
+Guesty assistant for the LuxBnB property-management team: reservations, calendar, inbox, tasks, and scheduled reports. Get started: (1) Work inside a Cowork Project — not a loose chat. (2) Connect the LuxBnB Guesty connector if tools are missing (see this repo's README). (3) In that project chat, run /luxbnb-guesty:setup (guesty-onboarding). (4) Then run /luxbnb-guesty:interview (interview-and-dashboard-setup) in the same chat to build reports. (5) Pin that chat and return there for system changes. Drop statements and contracts under reports/statements/ and reports/contracts/ in the project, not only in the chat.
 
 ChatGPT and Grok use the same three skills (`guesty-onboarding`, `guesty-assistant`, `interview-and-dashboard-setup`). Wording for those apps is in the ChatGPT and Grok marketplace catalogs in this repo.
 
